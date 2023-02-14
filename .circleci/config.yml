@@ -1,4 +1,6 @@
 version: 2.1
+orbs:
+  gcp-cli: circleci/gcp-cli@3.0.1
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
@@ -13,7 +15,7 @@ jobs:
       - checkout
       - run:
           name: "Say hello"
-          command: "echo 'bq --load'"
+          command: "bq query 'SELECT * FROM `isamu-ishikawa.SWITCHBOT_TEMP.data20210730` LIMIT 10'"
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
